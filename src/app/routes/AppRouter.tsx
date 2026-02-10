@@ -5,6 +5,9 @@ import { HomePage } from '@/pages/HomePage';
 import { MembersPage } from '@/pages/MembersPage';
 import { TasksPage } from '@/pages/TasksPage';
 import { ProjectPage } from '@/pages/ProjectPage';
+import { AuthLayout } from '../layouts/AuthLayout';
+import { LoginPage } from '@/pages/LoginPage';
+import { RegisterPage } from '@/pages/RegisterPage';
 
 export const AppRouter = () => {
   return (
@@ -17,6 +20,13 @@ export const AppRouter = () => {
           <Route path='tasks' element={<TasksPage />} />
           <Route path='settings' element={<SettingsPage />} />
           <Route path='projects' element={<ProjectPage />} />
+        </Route>
+        <Route path='/auth' element={<AuthLayout />}>
+          <Route index path='login' element={<LoginPage />} />
+          <Route index element={<LoginPage />} />
+          <Route path='register' element={<RegisterPage />} />
+
+          <Route></Route>
         </Route>
       </Routes>
     </Router>
