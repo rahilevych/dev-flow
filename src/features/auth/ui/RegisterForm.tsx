@@ -14,6 +14,9 @@ import { Label } from '@/shared/ui/label';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from 'react-router-dom';
 
+import { Spinner } from '@/shared/ui/spinner';
+import { useRegister } from '../model/useRegister';
+
 const registerSchema = z
   .object({
     name: z.string().min(2, 'Name is too short'),
@@ -26,6 +29,7 @@ const registerSchema = z
     path: ['confirmPassword'],
   });
 export const RegisterForm = () => {
+  const { mutate, isPending } = useRegister();
   const {
     register,
     handleSubmit,
@@ -35,7 +39,7 @@ export const RegisterForm = () => {
   });
 
   const onSubmit = (data: z.infer<typeof registerSchema>) => {
-    console.log('Sending to backend:', data);
+    mutate(data);
   };
 
   return (
@@ -129,9 +133,14 @@ export const RegisterForm = () => {
           )}
 
           <div className='flex flex-col gap-2 pt-2'>
-            <Button type='submit' className='w-full'>
-              Create Account
-            </Button>
+            {isPending ? (
+              <Button variant='secondary' className='w-full' disabled>
+                Create Account
+                <Spinner data-icon='inline-start' />
+              </Button>
+            ) : (
+              <Button className='w-full'>Create Account</Button>
+            )}
             <Button variant='outline' type='button' className='w-full'>
               Login with Github
             </Button>
@@ -141,7 +150,7 @@ export const RegisterForm = () => {
       <CardFooter className='justify-center border-t p-4'>
         <p className='text-sm text-muted-foreground'>
           Do you have already account?
-          <Link to='/auth/login' className='font-bold p-0 h-auto'>
+          <Link to='/login' className='font-bold p-0 h-auto'>
             Sign In
           </Link>
         </p>
