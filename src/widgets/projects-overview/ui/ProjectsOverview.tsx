@@ -8,7 +8,7 @@ import { SeeAllButton } from '@/shared/ui/custom/SeeAllButton';
 export const ProjectsOverview = () => {
   const title = 'Projects overview';
   const label = 'project';
-  const link = '/projects';
+  const link = '/dashboard/projects';
   const MAX_PROJECTS = 3;
   const displayProjects = PROJECTS_OVERVIEW_MOCK.slice(0, MAX_PROJECTS);
   const isHasMore = PROJECTS_OVERVIEW_MOCK.length > MAX_PROJECTS;

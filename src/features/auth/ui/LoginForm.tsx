@@ -14,11 +14,15 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import z from 'zod';
 
+import { Spinner } from '@/shared/ui/spinner';
+import { useLogin } from '../model/useLogin';
+
 const loginSchema = z.object({
   email: z.string().email('Invalid email'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 export const LoginForm = () => {
+  const { mutate, isPending } = useLogin();
   const {
     register,
     handleSubmit,
@@ -28,7 +32,7 @@ export const LoginForm = () => {
   });
 
   const onSubmit = (data: z.infer<typeof loginSchema>) => {
-    console.log('Sending to backend:', data);
+    mutate(data);
   };
 
   return (
@@ -84,9 +88,15 @@ export const LoginForm = () => {
           </div>
 
           <div className='flex flex-col gap-2 pt-2'>
-            <Button type='submit' className='w-full'>
-              Login
-            </Button>
+            {isPending ? (
+              <Button variant='secondary' className='w-full' disabled>
+                Login
+                <Spinner data-icon='inline-start' />
+              </Button>
+            ) : (
+              <Button className='w-full'>Login</Button>
+            )}
+
             <Button variant='outline' type='button' className='w-full'>
               Login with Github
             </Button>
@@ -97,7 +107,7 @@ export const LoginForm = () => {
       <CardFooter className='justify-center border-t p-4'>
         <p className='text-sm text-muted-foreground'>
           Don&apos;t have an account?
-          <Link to='/auth/register' className='p-0 h-auto font-bold'>
+          <Link to='/register' className='p-0 h-auto font-bold'>
             Sign Up
           </Link>
         </p>

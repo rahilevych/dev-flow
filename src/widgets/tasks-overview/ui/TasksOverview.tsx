@@ -7,7 +7,7 @@ import { TaskOverviewItem } from '@/entities/task/ui/TaskOverviewItem';
 export const TasksOverview = () => {
   const title = 'Tasks overview';
   const label = 'task';
-  const link = '/tasks';
+  const link = '/dashboard/tasks';
   const label2 = 'See all tasks';
 
   return (
