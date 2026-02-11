@@ -12,12 +12,13 @@ export const useLogout = () => {
     mutationFn: () => SessionService.logout(),
     onSuccess: () => {
       localStorage.removeItem('accessToken');
-      queryClient.removeQueries({ queryKey: ['currentUser'] });
+      queryClient.clear();
       toast.success('Successfully logged out!');
-      setIsAuth(false);
       navigate('/auth', { replace: true });
     },
     onError: () => {
+      localStorage.removeItem('accessToken');
+      queryClient.clear();
       setIsAuth(false);
       navigate('/auth', { replace: true });
     },
