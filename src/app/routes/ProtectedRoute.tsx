@@ -1,8 +1,8 @@
-import { useSessionStore } from '@/entities/session/model/SessionStore';
+import { useGetMe } from '@/features/auth/model/useGetMe';
 import { Navigate, Outlet } from 'react-router-dom';
 
 export const ProtectedRoute = () => {
-  const isAuth = useSessionStore((state) => state.isAuth);
-
-  return isAuth ? <Outlet /> : <Navigate to='/auth' replace />;
+  const { data: user } = useGetMe();
+  const token = localStorage.getItem('accessToken');
+  return user && token ? <Outlet /> : <Navigate to='/auth' replace />;
 };
