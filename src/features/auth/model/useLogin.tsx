@@ -1,0 +1,24 @@
+import SessionService from '@/entities/session/api/SessionService';
+import { useSessionStore } from '@/entities/session/model/SessionStore';
+import type { LoginDto } from '@/entities/session/model/types';
+import { useMutation } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+
+export const useLogin = () => {
+  const navigate = useNavigate();
+  const setIsAuth = useSessionStore((state) => state.setIsAuth);
+  return useMutation({
+    mutationFn: (dto: LoginDto) => SessionService.login(dto),
+    onSuccess: (res) => {
+      localStorage.setItem('accessToken', res.accessToken);
+      setIsAuth(true);
+      toast.success('Successfully logged in!');
+      navigate('/dashboard');
+    },
+    onError: (error) => {
+      console.log(error);
+      toast.error(error.message);
+    },
+  });
+};
