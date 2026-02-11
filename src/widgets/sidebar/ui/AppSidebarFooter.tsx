@@ -1,3 +1,4 @@
+import { LogoutButton } from '@/shared/ui/custom/LogoutButton';
 import {
   SidebarFooter,
   SidebarMenu,
@@ -14,6 +15,7 @@ export const AppSidebarFooter = ({ username }: { username: string }) => {
           <SidebarMenuButton>
             <User2 /> {username}
           </SidebarMenuButton>
+          <LogoutButton />
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarFooter>
