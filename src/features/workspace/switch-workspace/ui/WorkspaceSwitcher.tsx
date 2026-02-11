@@ -14,6 +14,7 @@ import {
 } from '@/shared/ui/sidebar';
 import { ChevronsUpDown, Plus } from 'lucide-react';
 import { useState } from 'react';
+import { CreateWorkspaceModal } from '../../create-workspace/ui/CreateModal';
 
 const workspaces = [
   { name: 'Design Team', id: '1' },
@@ -63,14 +64,19 @@ export const WorkspaceSwitcher = () => {
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem className='gap-2 p-2 cursor-pointer'>
-              <div className='flex size-6 items-center justify-center rounded-md border bg-background'>
-                <Plus className='size-4' />
-              </div>
-              <div className='font-medium text-muted-foreground text-xs'>
-                Add workspace
-              </div>
-            </DropdownMenuItem>
+            <CreateWorkspaceModal>
+              <DropdownMenuItem
+                className='gap-2 p-2 cursor-pointer'
+                onSelect={(e) => e.preventDefault()}
+              >
+                <div className='flex size-6 items-center justify-center rounded-md border bg-background'>
+                  <Plus className='size-4' />
+                </div>
+                <div className='font-medium text-muted-foreground text-xs'>
+                  Add workspace
+                </div>
+              </DropdownMenuItem>
+            </CreateWorkspaceModal>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
