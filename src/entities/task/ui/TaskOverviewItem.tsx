@@ -1,4 +1,4 @@
-import type { TaskOverviewData } from '@/widgets/tasks-overview/model/type';
+import type { TaskOverviewData } from '@/widgets/dashboard/tasks/home-overview/model/type';
 
 interface TasksOverviewProps {
   task: TaskOverviewData;

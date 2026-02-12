@@ -1,6 +1,6 @@
 import { SidebarProvider, SidebarTrigger } from '@/shared/ui/sidebar';
-import { HeaderContent } from '@/widgets/header/ui/HeaderContent';
-import { AppSidebar } from '@/widgets/sidebar/ui/AppSidebar';
+import { HeaderContent } from '@/widgets/dashboard/dashboard-header/ui/HeaderContent';
+import { AppSidebar } from '@/widgets/dashboard/sidebar/ui/AppSidebar';
 import { Outlet } from 'react-router-dom';
 
 export const DashboardLayout = () => {
