@@ -18,7 +18,7 @@ import { RegisterPage } from '@/pages/RegisterPage';
 import { ProtectedRoute } from './ProtectedRoute';
 import { GuestRoute } from './GuestRoute';
 import { WelcomePage } from '@/pages/WelcomePage';
-import { LandingPage } from '@/pages/LandingPage';
+import { LandingPage } from '@/pages/landing/LandingPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

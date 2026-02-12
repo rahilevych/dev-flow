@@ -1,4 +1,4 @@
-import type { ProjectOverviewData } from '@/widgets/projects-overview/model/types';
+import type { ProjectOverviewData } from '@/widgets/dashboard/projects/home-overview/model/types';
 import { Calendar, Users } from 'lucide-react';
 interface ProjectOverviewItemProps {
   project: ProjectOverviewData;

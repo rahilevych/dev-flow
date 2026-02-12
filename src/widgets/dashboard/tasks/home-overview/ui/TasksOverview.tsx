@@ -1,7 +1,7 @@
 import { AddButton } from '@/shared/ui/custom/AddButton';
 import { SectionHeader } from '@/shared/ui/custom/SectionHeader';
 import { SeeAllButton } from '@/shared/ui/custom/SeeAllButton';
-import { TASKS_MOCK } from '../model/constants';
+import { TASKS_MOCK } from '../../dashboard/tasks/home-overview/model/constants';
 import { TaskOverviewItem } from '@/entities/task/ui/TaskOverviewItem';
 
 export const TasksOverview = () => {
