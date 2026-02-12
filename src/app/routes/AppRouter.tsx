@@ -18,6 +18,7 @@ import { RegisterPage } from '@/pages/RegisterPage';
 import { ProtectedRoute } from './ProtectedRoute';
 import { GuestRoute } from './GuestRoute';
 import { WelcomePage } from '@/pages/WelcomePage';
+import { LandingPage } from '@/pages/LandingPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -61,13 +62,13 @@ const router = createBrowserRouter(
       </Route>
 
       <Route element={<GuestRoute />}>
-        <Route path='/' element={<AuthLayout />}>
+        <Route path='auth' element={<AuthLayout />}>
           <Route index element={<LoginPage />} />
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<RegisterPage />} />
         </Route>
       </Route>
-
+      <Route path='/' element={<LandingPage />}></Route>
       <Route path='*' element={<Navigate to='/' replace />} />
     </Route>,
   ),
