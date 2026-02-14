@@ -1,4 +1,3 @@
-import { PROJECTS_OVERVIEW_MOCK } from '@/widgets/dashboard/projects/home-overview/model/projectsOverviewData';
 import { ProjectsOverview } from '@/widgets/dashboard/projects/home-overview/ui/ProjectsOverview';
 import { HomeStats } from '@/widgets/dashboard/statistic/ui/HomeStats';
 import { HomeStatsNoProjects } from '@/widgets/dashboard/statistic/ui/HomeStatsNoProjects';

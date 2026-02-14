@@ -6,14 +6,17 @@ import { useParams } from 'react-router';
 
 export const SettingsPage = () => {
   const { id } = useParams<{ id: string }>();
-  const { data: workspace } = useGetWorkspace(id!);
-
+  const { data: workspace, isPending } = useGetWorkspace(id!);
+  if (isPending) return null;
   return (
     <div>
       <DeleteWorkspaceButton />
-      <UpdateWorkspaceModal workspace={workspace}>
-        <button>update</button>
-      </UpdateWorkspaceModal>
+
+      {workspace && (
+        <UpdateWorkspaceModal workspace={workspace}>
+          <button>update</button>
+        </UpdateWorkspaceModal>
+      )}
     </div>
   );
 };
