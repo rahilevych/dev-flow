@@ -1,8 +1,15 @@
+import { useGetMe } from '@/features/auth/model/useGetMe';
+import { Loader } from '@/shared/ui/Loader';
 import { SidebarProvider, SidebarTrigger } from '@/shared/ui/sidebar';
 import { AppSidebar } from '@/widgets/dashboard/sidebar/ui/AppSidebar';
 import { Outlet } from 'react-router-dom';
 
 export const DashboardLayout = () => {
+  const { isLoading } = useGetMe();
+
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <SidebarProvider>
       <div className='flex h-screen w-full overflow-hidden bg-background'>
