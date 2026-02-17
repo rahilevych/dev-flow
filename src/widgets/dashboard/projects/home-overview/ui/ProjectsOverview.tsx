@@ -24,7 +24,7 @@ export const ProjectsOverview = () => {
   );
   const title = 'Projects overview';
   const label = 'Add project';
-  const MAX_PROJECTS = 3;
+  const MAX_PROJECTS = 5;
 
   const isEmpty = !projects || projects.length === 0;
   const displayProjects = projects?.slice(0, MAX_PROJECTS) || [];

@@ -22,7 +22,7 @@ const projectSchema = z.object({
     .string()
     .min(2, 'Key must be at least 2 characters')
     .max(10, 'Key is too long')
-    .regex(/^[A-Z0-9]+$/, 'Key must be uppercase letters and numbers only'),
+    .transform((val) => val.toUpperCase().trim()),
   description: z
     .string()
     .max(255, 'Description is too long')
@@ -52,6 +52,7 @@ export const ProjectForm = ({
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<ProjectFormValues>({
     resolver: zodResolver(projectSchema),
@@ -73,7 +74,7 @@ export const ProjectForm = ({
           <Input
             {...register('name')}
             id='name'
-            placeholder='E.g., Marketing Campaign'
+            placeholder='Project name'
             className={
               errors.name
                 ? 'border-destructive focus-visible:ring-destructive'
@@ -106,15 +107,19 @@ export const ProjectForm = ({
           <Input
             {...register('key')}
             id='key'
-            placeholder='E.g., MKT'
+            placeholder='KEY'
             className={
               errors.key
-                ? 'border-destructive focus-visible:ring-destructive'
+                ? 'border-destructive  focus-visible:ring-destructive'
                 : ''
             }
+            onChange={(e) => {
+              const val = e.target.value.toUpperCase();
+              setValue('key', val, { shouldValidate: true });
+            }}
           />
           <p className='text-[10px] text-muted-foreground uppercase'>
-            Visible in task IDs (e.g., {initialValues?.key || 'KEY'}-101)
+            Visible in task IDs (e.g., {initialValues?.key || 'KEY'})
           </p>
           {errors.key && (
             <p className='text-xs text-destructive font-medium'>
