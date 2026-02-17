@@ -53,7 +53,7 @@ export const LoginForm = () => {
                 {...register('email')}
                 id='email'
                 type='email'
-                placeholder='m@example.com'
+                placeholder='youremail@gamil.com'
                 className={
                   errors.email
                     ? 'border-destructive focus-visible:ring-destructive'

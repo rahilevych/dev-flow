@@ -77,7 +77,7 @@ export const TaskForm = ({
           <Input
             {...register('title')}
             id='title'
-            placeholder='What needs to be done?'
+            placeholder='Task title'
             className={errors.title ? 'border-destructive' : ''}
           />
           {errors.title && (
@@ -89,6 +89,7 @@ export const TaskForm = ({
           <textarea
             {...register('description')}
             id='description'
+            placeholder='Task description'
             className='flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm'
           />
         </Field>
