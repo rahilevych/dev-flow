@@ -35,7 +35,7 @@ export const DeleteConfirmButton = ({
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant='destructive' disabled={isPending}>
+        <Button variant='destructive' disabled={isPending} size='lg'>
           {buttonText}
         </Button>
       </AlertDialogTrigger>

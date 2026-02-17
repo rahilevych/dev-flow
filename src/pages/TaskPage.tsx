@@ -75,7 +75,7 @@ export const TaskPage = () => {
                 onConfirm={handleDelete}
                 isPending={isDeleting}
                 title={`Delete ${task?.title}?`}
-                buttonText='Delete'
+                buttonText='Delete task'
               />
             </div>
           </div>

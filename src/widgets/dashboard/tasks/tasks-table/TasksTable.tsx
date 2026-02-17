@@ -90,7 +90,9 @@ export function TasksTable<TData, TValue>({
             <DeleteConfirmButton
               onConfirm={handleDelete}
               buttonText={
-                isDeleting ? 'Deleting...' : `Delete (${selectedRows.length})`
+                isDeleting
+                  ? 'Deleting tasks...'
+                  : `Delete tasks (${selectedRows.length})`
               }
             />
           )}
@@ -129,7 +131,14 @@ export function TasksTable<TData, TValue>({
                   }}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell
+                      key={cell.id}
+                      onClick={(e) => {
+                        if (cell.column.id === 'select') {
+                          e.stopPropagation();
+                        }
+                      }}
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext(),

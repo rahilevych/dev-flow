@@ -35,9 +35,9 @@ export const ProjectPage = () => {
   return (
     <div className='flex flex-col h-full bg-background'>
       <div className='mt-2 border-b bg-card/50'>
-        <div className='flex justify-between items-start mb-4'>
+        <div className='flex flex-col items-start gap-5 sm:flex-row justify-between  mb-4'>
           <div>
-            <div className='flex items-center gap-3'>
+            <div className='flex  items-center gap-3'>
               <h1 className='text-2xl font-medium tracking-tight'>
                 {project.name}
               </h1>
@@ -47,9 +47,9 @@ export const ProjectPage = () => {
             </div>
           </div>
 
-          <div className='flex items-center gap-2'>
+          <div className='flex  items-center gap-2'>
             <UpdateProjectModal project={project}>
-              <Button variant='outline' size='sm' className='gap-2'>
+              <Button variant='outline' size='lg' className='gap-2'>
                 <Settings2 className='w-4 h-4' />
                 Update
               </Button>
@@ -59,7 +59,7 @@ export const ProjectPage = () => {
               onConfirm={handleDelete}
               isPending={isDeleting}
               title={`Delete ${project.name}?`}
-              buttonText='Delete'
+              buttonText='Delete project '
             />
           </div>
         </div>

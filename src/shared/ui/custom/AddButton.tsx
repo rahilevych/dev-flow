@@ -7,7 +7,7 @@ type AddButtonProps = React.ComponentProps<typeof Button> & {
 
 export const AddButton = ({ label, ...props }: AddButtonProps) => {
   return (
-    <Button variant='outline' size='sm' className='gap-2' {...props}>
+    <Button variant='outline' size='lg' className='gap-2' {...props}>
       <span> {label}</span>
       <Plus size={16} />
     </Button>
