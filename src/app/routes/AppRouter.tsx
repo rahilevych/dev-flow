@@ -20,6 +20,7 @@ import { GuestRoute } from './GuestRoute';
 import { WelcomePage } from '@/pages/WelcomePage';
 import { LandingPage } from '@/pages/landing/LandingPage';
 import { ProjectPage } from '@/pages/ProjectPage';
+import { TaskPage } from '@/pages/TaskPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +44,11 @@ const router = createBrowserRouter(
           <Route
             path='tasks'
             element={<TasksPage />}
+            handle={{ title: 'Tasks' }}
+          />
+          <Route
+            path='projects/:projectId/tasks/:taskId'
+            element={<TaskPage />}
             handle={{ title: 'Tasks' }}
           />
           <Route
