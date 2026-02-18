@@ -1,17 +1,12 @@
-import { useMatches } from 'react-router-dom';
-
-export const HeaderContent = () => {
-  const matches = useMatches();
-  const currentMatch = [...matches].reverse().find((m) => m.handle);
-  const meta = currentMatch?.handle as { title: string; description?: string };
-
+interface HeaderContentProps {
+  title?: string;
+  children?: React.ReactNode;
+}
+export const HeaderContent = ({ title, children }: HeaderContentProps) => {
   return (
-    <header className=' flex items-start w-full mb-10'>
-      <div>
-        <h2 className='text-xl md:text-3xl font-bold tracking-tight'>
-          {meta.title}
-        </h2>{' '}
-      </div>
+    <header className='w-full flex  flex-col items-start justify-between  mb-10'>
+      <h1 className='text-xl md:text-3xl font-bold tracking-tight '>{title}</h1>
+      <div className='w-full flex justify-between  '> {children}</div>
     </header>
   );
 };
